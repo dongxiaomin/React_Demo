@@ -20,6 +20,19 @@ IOS: `sudo  npm  install  -g json-server`
 
 ### 4. 根目录新建 db.json，复制一些数据
 
+```
+ {
+     "records": 
+        [
+            {
+            "id": "1",
+            "date": "2020-01-09",
+            "title": "title 1",
+            "amount": 7
+            }
+        ]
+ }
+```
 
 ### 5. 进入当前目录,监听3004端口
 
