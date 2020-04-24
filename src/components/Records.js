@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Record from './Record';
+import RecordForm from './RecordForm';
 import * as RecordsAPI from '../utils/RecordsAPI';
 
 class Records extends Component {
@@ -27,30 +28,34 @@ class Records extends Component {
     }
     render() {
         const { error, isLoaded} = this.state;
+        let componentRecords;
         if (error) {
-            return <div>Error: {error.message}</div>
+            componentRecords = <div>Error: {error.message}</div>
         }else if (!isLoaded) {
-            return <div>Loading...</div>
+            componentRecords = <div>Loading...</div>
         }else {
-            return (
-                <div className="container">
-                    <h2>Records</h2>
-                    <table className="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Title</th>
-                                    <th>Amount</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.records.map((record,i) => <Record key={record.id} {...record}/>)}
-                                
-                            </tbody>
-                    </table>
-                </div>
-            )
+            componentRecords =                  
+                <table className="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Title</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.records.map((record,i) => <Record key={record.id} {...record}/>)}
+                            
+                        </tbody>
+                </table>
         }
+        return (
+            <div className="container">
+                <h2>Records</h2>
+                <RecordForm />
+                {componentRecords}
+            </div>
+        )
     }
 }
 
