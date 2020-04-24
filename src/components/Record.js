@@ -4,9 +4,9 @@ class Record extends Component {
   render() {
     return (
         <tr>
-            <th>{this.props.record.date}</th>
-            <th>{this.props.record.title}</th>
-            <th>{this.props.record.amount}</th>
+            <th>{this.props.date}</th>
+            <th>{this.props.title}</th>
+            <th>{this.props.amount}</th>
         </tr>
     )
   }

@@ -1,11 +1,71 @@
-## 使用 json-server 快速搭建本地数据接口, 模拟API数据
+## 1. 使用 json-server 快速搭建本地数据接口, 模拟API数据
 
-link
+* [具体方法](https://github.com/dongxiaomin/React_Demo/blob/master/json_server.md)
+
 
 --------------------------
 
 
-## 
+## 2. 使用 jquery 或 axios 请求 API
+
+### 2.1 使用 jquery
+
+#### 引入 Jquery
+
+终端: ` npm i jquery -S `
+
+引入: ` import $ from  'jquery' `
+
+按需导入，只导入 getJSON: ` import  { getJSON } from 'jquery' `
+
+
+#### 例子
+```
+    $.getJSON("http://localhost:3004/recordss").then(
+        // response => console.log(response),
+        response => this.setState({
+            records: response,
+            isLoaded: true
+        }),
+        error => this.setState({
+            error: error.statusText,
+            isLoaded: true
+        })
+    )
+```
+
+### 2.2 使用 axios
+
+#### 引入 axios
+
+终端: `npm install axios`
+
+引入: `import axios from 'axios'`
+
+#### 例子
+
+```
+    axios.get("http://localhost:3004/recordss").then(
+        response => this.setState({
+            records: response.data,
+            isLoaded: true
+        })
+    ).catch(
+        // error => console.log(error)
+        error => this.setState({
+            error: error.message,
+            isLoaded: true
+        })
+    )
+```
+
+## ES 6
+1. es6 扩展运算语句，下面两者相同
+`{id: record.id} {date: record.date} {title: record.title} {amount: record.amount}`
+
+` {...record}`
+
+
 
 
 

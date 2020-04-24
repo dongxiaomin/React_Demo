@@ -15,7 +15,7 @@ IOS: `sudo  npm  install  -g json-server`
 
 如果出现下面内容，表明安装成功！
 
-![Image text](./public/json_server.png)
+![Image](./public/json_server.png)
 
 
 ### 4. 根目录新建 db.json，复制一些数据
@@ -38,17 +38,17 @@ IOS: `sudo  npm  install  -g json-server`
 
 `json-server --watch db.json --port 3004`
 
-![Image text](./public/listen.png)
+![Image](./public/listen.png)
 
 
 ### 6. 打开 postman,发送 http://localhost:3004/records, 拿到数据
 
-![Image text](./public/postman.png)
+![Image](./public/postman.png)
 
 
 ### 7. 增加一条数据，用 post 请求，同时db.json 会增加一条数据
 
-![Image text](./public/add_record.png)
+![Image](./public/add_record.png)
 
 ### 8. 控制台验证数据，显示出数据
 
@@ -62,7 +62,7 @@ fetch("http://localhost:3004/records").then(function(response){
 })
 ```
 
-![Image text](./public/records.png)
+![Image](./public/records.png)
 
 
 ### 9. 重启 Server
