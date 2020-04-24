@@ -62,23 +62,40 @@ test
 ```
 
 
-## 3. 静态类型检查和改造 api 
+## 3. 静态类型检查
 
-#### 引入 prop-types
+### 引入 prop-types
 
 安装: `npm install prop-types --save`
 
 引入: `import PropTypes from 'prop-types'`
 
+## 4. 通过使用环境变量，来改造 API
+
+创建环境变量
+
+`REACT_APP_test` 开头
+
+引用 
+
+`process.env.REACT_APP_test` 
 
 ---------------
 
-## ES 6
+## 遇到问题
+
 1. es6 扩展运算语句，下面两者相同
+
 `{id: record.id} {date: record.date} {title: record.title} {amount: record.amount}`
 
 ` {...record}`
 
+2. 
+查看端口占用进程: `sudo lsof -i :3000`
+
+结束相应进程: `sudo kill -9 12297`
+
+重启服务 `npm stop` `npm start`
 
 
 -----------

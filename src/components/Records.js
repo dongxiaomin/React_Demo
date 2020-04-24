@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Record from './Record';
-// import $ from 'jquery';
-import axios from 'axios';
+import * as RecordsAPI from '../utils/RecordsAPI';
 
 class Records extends Component {
     constructor() {
@@ -13,18 +12,7 @@ class Records extends Component {
         }
     }
     componentDidMount() {
-        // $.getJSON("http://localhost:3004/recordss").then(
-        //     // response => console.log(response),
-        //     response => this.setState({
-        //         records: response,
-        //         isLoaded: true
-        //     }),
-        //     error => this.setState({
-        //         error: error.statusText,
-        //         isLoaded: true
-        //     })
-        // )
-        axios.get("http://localhost:3004/records").then(
+        RecordsAPI.getAll().then(
             response => this.setState({
                 records: response.data,
                 isLoaded: true
@@ -40,8 +28,7 @@ class Records extends Component {
     render() {
         const { error, isLoaded} = this.state;
         if (error) {
-            // return <div>Error: {error.statusText}</div> //jquery error
-            return <div>Error: {error.message}</div> //axios error
+            return <div>Error: {error.message}</div>
         }else if (!isLoaded) {
             return <div>Loading...</div>
         }else {
