@@ -2,7 +2,9 @@
 
 * [具体方法](https://github.com/dongxiaomin/React_Demo/blob/master/json_server.md)
 
+test
 
+![Image text](./public/json_server.png)
 --------------------------
 
 
@@ -12,7 +14,7 @@
 
 #### 引入 Jquery
 
-终端: ` npm i jquery -S `
+安装: ` npm i jquery -S `
 
 引入: ` import $ from  'jquery' `
 
@@ -38,7 +40,7 @@
 
 #### 引入 axios
 
-终端: `npm install axios`
+安装: `npm install axios`
 
 引入: `import axios from 'axios'`
 
@@ -59,6 +61,18 @@
     )
 ```
 
+
+## 3. 静态类型检查和改造 api 
+
+#### 引入 prop-types
+
+安装: `npm install prop-types --save`
+
+引入: `import PropTypes from 'prop-types'`
+
+
+---------------
+
 ## ES 6
 1. es6 扩展运算语句，下面两者相同
 `{id: record.id} {date: record.date} {title: record.title} {amount: record.amount}`
@@ -67,7 +81,7 @@
 
 
 
-
+-----------
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
