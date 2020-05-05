@@ -26,6 +26,20 @@ class Records extends Component {
             })
         )
     }
+
+    addRecord(record) {
+        console.log(record)
+        //更新 Records组件（父组件）
+        this.setState ({
+            error: null,
+            isLoaded: true,
+            records: [
+                ...this.state.records,
+                record
+            ]
+        })
+    }
+
     render() {
         const { error, isLoaded} = this.state;
         let componentRecords;
@@ -52,7 +66,7 @@ class Records extends Component {
         return (
             <div className="container">
                 <h2>Records</h2>
-                <RecordForm />
+                <RecordForm handleNewRecord={this.addRecord.bind(this)}/>
                 {componentRecords}
             </div>
         )
