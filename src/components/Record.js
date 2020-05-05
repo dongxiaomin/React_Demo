@@ -25,13 +25,23 @@ export default class Record extends Component {
     }
     // console.log(record)
     RecordsAPI.update(this.props.record.id, record).then(
-      // RecordsAPI.update(this.props.record.id, record).then(
       // response => console.log(response.data)
       response => {
         this.setState({
           edit: false
         })
         this.props.handleEditRecord(this.props.record, response.data)
+      }
+    ).catch(
+      error => console.log(error.message)
+    )
+  }
+
+  handleDeltet(e) {
+    e.preventDefault();
+    RecordsAPI.remove(this.props.record.id).then(
+      response => {
+        this.props.handleDeleteRecord(this.props.record)
       }
     ).catch(
       error => console.log(error.message)
@@ -46,7 +56,7 @@ export default class Record extends Component {
           <th>{this.props.record.amount}</th>
           <th>
             <button className="btn btn-info mr-1" onClick={this.handleToggle.bind(this)}>Edit</button>
-            <button className="btn btn-danger">Delete</button>
+            <button className="btn btn-danger" onClick={this.handleDeltet.bind(this)}>Delete</button>
           </th>
       </tr>
     )

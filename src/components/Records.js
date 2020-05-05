@@ -57,6 +57,14 @@ class Records extends Component {
         })
     }
 
+    deleteRecord(record) {
+        const recordIndex = this.state.records.indexOf(record);
+        const newRecord = this.state.records.filter( (item, index) => index != recordIndex )
+        this.setState({
+            records: newRecord
+        })
+    }
+
     render() {
         const { error, isLoaded} = this.state;
         let componentRecords;
@@ -76,7 +84,16 @@ class Records extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.records.map((record,i) => <Record key={record.id} record={record} handleEditRecord={this.updateRecord.bind(this)} />)}                            
+                            {this.state.records.map((record,i) => (
+                                <Record 
+                                    key={record.id} 
+                                    record={record} 
+                                    handleEditRecord={this.updateRecord.bind(this)}
+                                    handleDeleteRecord={this.deleteRecord.bind(this)}
+                                />
+                             )
+                            )}
+
                         </tbody>
                 </table>
         }
