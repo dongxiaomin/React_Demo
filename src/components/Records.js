@@ -33,10 +33,27 @@ class Records extends Component {
         this.setState ({
             error: null,
             isLoaded: true,
-            records: [
+            records: [//合并数组
                 ...this.state.records,
                 record
             ]
+        })
+    }
+
+    updateRecord(record, data) {//old, new
+        // console.log(record, data)
+        const recordIndex = this.state.records.indexOf(record);
+        const newRecord = this.state.records.map( (item, index) => {
+            if(index != recordIndex) {
+                return item;
+            }
+            return {
+                ...item,
+                ...data
+            }
+        });
+        this.setState({
+            records: newRecord
         })
     }
 
@@ -55,11 +72,11 @@ class Records extends Component {
                                 <th>Date</th>
                                 <th>Title</th>
                                 <th>Amount</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.records.map((record,i) => <Record key={record.id} {...record}/>)}
-                            
+                            {this.state.records.map((record,i) => <Record key={record.id} record={record} handleEditRecord={this.updateRecord.bind(this)} />)}                            
                         </tbody>
                 </table>
         }

@@ -1,10 +1,10 @@
 {
   "records": [
     {
-      "id": 1,
       "date": "2020-01-09",
-      "title": "title 1",
-      "amount": 7
+      "title": "title 12",
+      "amount": 12,
+      "id": 1
     },
     {
       "id": 2,
