@@ -1,10 +1,9 @@
+## [源码](https://github.com/dongxiaomin/React_Demo)
+
 ## 1. 使用 json-server 快速搭建本地数据接口, 模拟API数据
 
 * [具体方法](https://github.com/dongxiaomin/React_Demo/blob/master/json_server.md)
 
-test
-
-![Image text](./public/json_server.png)
 --------------------------
 
 
