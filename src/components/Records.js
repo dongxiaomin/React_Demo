@@ -68,6 +68,28 @@ class Records extends Component {
         })
     }
 
+    credit() {
+        let credit = this.state.records.filter( (record) => {
+            return record.amount >= 0;
+        })
+        return credit.reduce((prev, curr) => {
+            return prev + parseInt(curr.amount, 0)
+        }, 0)
+    }
+
+    debit() {
+        let credit = this.state.records.filter( (record) => {
+            return record.amount < 0;
+        })
+        return credit.reduce((prev, curr) => {
+            return prev + parseInt(curr.amount, 0)
+        }, 0)
+    }
+
+    balance() {
+        return this.credit() + this.debit();
+    }
+
     render() {
         const { error, isLoaded} = this.state;
         let componentRecords;
@@ -103,10 +125,10 @@ class Records extends Component {
         return (
             <div className="container">
                 <h2>Records</h2>
-                <div className="">
-                    <AmountBox text="Credit" type="panel-primary"/>
-                    <AmountBox text="Debit" type="panel-danger"/>
-                    <AmountBox text="Balance" type="panel-info"/>
+                <div className="clearFloat" style={{overflow:'hidden'}}>
+                    <AmountBox text="Credit" type="panel-primary" amount={this.credit()} />
+                    <AmountBox text="Debit" type="panel-danger" amount={this.debit()} />
+                    <AmountBox text="Balance" type="panel-info" amount={this.balance()} />
                 </div>
                 <RecordForm handleNewRecord={this.addRecord.bind(this)}/>
                 {componentRecords}
