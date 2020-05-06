@@ -37,8 +37,9 @@ export default class Record extends Component {
     )
   }
 
-  handleDeltet(e) {
+  handleDelete(e) {
     e.preventDefault();
+    // console.log(this.props.record) //要删除的
     RecordsAPI.remove(this.props.record.id).then(
       response => {
         this.props.handleDeleteRecord(this.props.record)
@@ -56,7 +57,7 @@ export default class Record extends Component {
           <th>{this.props.record.amount}</th>
           <th>
             <button className="btn btn-info mr-1" onClick={this.handleToggle.bind(this)}>Edit</button>
-            <button className="btn btn-danger" onClick={this.handleDeltet.bind(this)}>Delete</button>
+            <button className="btn btn-danger" onClick={this.handleDelete.bind(this)}>Delete</button>
           </th>
       </tr>
     )

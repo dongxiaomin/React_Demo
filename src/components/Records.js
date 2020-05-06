@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Record from './Record';
 import RecordForm from './RecordForm';
 import * as RecordsAPI from '../utils/RecordsAPI';
+import AmountBox from './AmountBox';
 
 class Records extends Component {
     constructor() {
@@ -44,7 +45,7 @@ class Records extends Component {
         // console.log(record, data)
         const recordIndex = this.state.records.indexOf(record);
         const newRecord = this.state.records.map( (item, index) => {
-            if(index != recordIndex) {
+            if(index !== recordIndex) {
                 return item;
             }
             return {
@@ -58,8 +59,10 @@ class Records extends Component {
     }
 
     deleteRecord(record) {
+        // console.log(record) //要删除的 
+        // console.log(this.state.records) //剩余的
         const recordIndex = this.state.records.indexOf(record);
-        const newRecord = this.state.records.filter( (item, index) => index != recordIndex )
+        const newRecord = this.state.records.filter( (item, index) => index !== recordIndex )
         this.setState({
             records: newRecord
         })
@@ -100,6 +103,11 @@ class Records extends Component {
         return (
             <div className="container">
                 <h2>Records</h2>
+                <div className="">
+                    <AmountBox text="Credit" type="panel-primary"/>
+                    <AmountBox text="Debit" type="panel-danger"/>
+                    <AmountBox text="Balance" type="panel-info"/>
+                </div>
                 <RecordForm handleNewRecord={this.addRecord.bind(this)}/>
                 {componentRecords}
             </div>
